@@ -47,6 +47,8 @@
           <li class="active"><button class="link">Seat Allotment Result</button></li>
           <li><button class="link">Fee Payment Details</button></li>
           <li><button class="link">Print Locked Choice(s)</button></li>
+          <!-- Added left-side Allotment Letter item -->
+          <li><button id="sidebarAllotment" class="link">Allotment Letter</button></li>
         </ul>
       </div>
 
@@ -84,7 +86,7 @@
 
           <div style="flex:1">
             <div class="panel">
-              <div class="header">Allotment Letter</div>
+              <div class="header" id="mainAllotmentHeader">Allotment Letter</div>
               <div class="body" style="padding:12px">
                 <!-- This box is intentionally empty when shown -->
                 <div id="allotmentBox" class="empty-box" aria-hidden="true"></div>
@@ -97,22 +99,29 @@
   </div>
 
   <script>
-    // When the user taps the 'Allotment Letter' header in the sidebar, show the empty box (no content)
+    // Toggle the empty allotment box when either the main header or the left sidebar item is clicked.
     (function(){
       const allotBox = document.getElementById('allotmentBox');
-      // Find the sidebar "Allotment Letter" element — user asked tapping on 'Allotment Letter' (we'll bind to the panel header in main)
-      // We'll make the header clickable as well to meet the requirement
-      const allotmentHeaders = Array.from(document.querySelectorAll('.panel .header'));
-      allotmentHeaders.forEach(h => {
-        if (/Allotment Letter/i.test(h.textContent)){
-          h.style.cursor = 'pointer';
-          h.addEventListener('click', function(){
-            // toggle visibility class — but do not add any text/content
-            const shown = allotBox.classList.toggle('visible');
-            allotBox.setAttribute('aria-hidden', (!shown).toString());
-          });
-        }
-      });
+      const mainHeader = document.getElementById('mainAllotmentHeader');
+      const sidebarBtn = document.getElementById('sidebarAllotment');
+
+      function toggleEmptyBox(){
+        const shown = allotBox.classList.toggle('visible');
+        allotBox.setAttribute('aria-hidden', (!shown).toString());
+      }
+
+      if (mainHeader){
+        mainHeader.style.cursor = 'pointer';
+        mainHeader.addEventListener('click', toggleEmptyBox);
+      }
+
+      if (sidebarBtn){
+        sidebarBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          // When user taps the left-side Allotment Letter, show the same empty box (no content)
+          toggleEmptyBox();
+        });
+      }
     })();
   </script>
 </body>
