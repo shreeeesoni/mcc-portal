@@ -38,6 +38,16 @@
         <div class="panel-header small">Contact Us</div>
         <p class="email">mccundergraduate[at]gmail[dot]com</p>
       </div>
+
+      <!-- New: Allotment Letter collapsible panel (opens but contains nothing) -->
+      <div class="panel card allotment-card">
+        <div class="panel-header">Allotment Letter</div>
+        <button id="toggleAllotment" class="btn small">Open</button>
+        <div id="allotmentPanel" class="allotment-panel" aria-hidden="true">
+          <!-- Intentionally left blank to "show nothing" when opened -->
+        </div>
+      </div>
+
     </aside>
 
     <main class="content">
@@ -94,5 +104,7 @@
       </ul>
     </aside>
   </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
