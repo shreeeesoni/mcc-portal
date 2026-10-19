@@ -41,11 +41,24 @@ body{
 .badge.small{font-size:10px;padding:2px 4px}
 .small{padding:12px 16px}
 .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px;display:inline-block}
-.btn-toggle{margin:12px;display:inline-block}
 .verify{list-style:none;padding:10px;margin:0;color:var(--muted)}
 .contact .email{font-family:monospace;color:#0b5d82;padding:12px}
 .topbar{padding:8px 0}
 .topbar h1{margin:0;font-size:20px}
+
+.main-panels{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.main-panel{flex:1;min-width:0}
+.new-registration-panel .panel-body{padding:16px}
+.allotment-panel-wrap{background:#f7f7f7}
+.allotment-blank-panel{
+  min-height:120px;
+  background:transparent;
+  border-top:1px solid #e9e9e9;
+}
 .preview{padding:16px}
 .screenshot img{width:100%;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.12)}
 .help{color:var(--muted);font-size:13px;margin-top:8px}
@@ -58,19 +71,9 @@ body{
 .details-list ul{list-style:disc;margin:6px 0 0 18px;padding:0}
 .contact-line{font-family:monospace;color:#0b5d82;margin-top:6px}
 
-/* Allotment panel styles: collapsed by default, expands when visible but contains no content */
-.allotment-card{margin-top:12px;padding-bottom:12px}
-.toggle-checkbox{display:none}
-.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px;display:inline-block}
-.btn-toggle{margin:12px;display:inline-block}
-.allotment-panel{max-height:0;overflow:hidden;border-top:1px solid #e6e6e6;transition:max-height 220ms ease;padding:0 12px}
-/* when visible, show an empty block with a minimal height so it's clearly "open" but empty */
-.allotment-panel.visible{max-height:64px}
-/* CSS-only fallback: when checkbox is checked, expand the panel */
-#toggleAllotmentCheckbox:checked ~ .allotment-panel{max-height:64px}
-
 @media (max-width:1100px){
   .wrapper{flex-direction:column;padding:12px}
   .sidebar{width:100%}
   .details{width:100%}
+  .main-panels{flex-direction:column}
 }

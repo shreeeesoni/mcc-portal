@@ -38,29 +38,26 @@
         <div class="panel-header small">Contact Us</div>
         <p class="email">mccundergraduate[at]gmail[dot]com</p>
       </div>
-
-      <!-- New: Allotment Letter collapsible panel (opens but contains nothing) -->
-      <div class="panel card allotment-card">
-        <div class="panel-header">Allotment Letter</div>
-
-        <!-- Checkbox toggle (CSS-only fallback) -->
-        <input type="checkbox" id="toggleAllotmentCheckbox" class="toggle-checkbox" aria-hidden="true">
-        <label for="toggleAllotmentCheckbox" class="btn small btn-toggle">Open</label>
-
-        <!-- JS toggle (kept for compatibility) -->
-        <button id="toggleAllotment" class="btn small" style="display:none">Open</button>
-
-        <div id="allotmentPanel" class="allotment-panel" aria-hidden="true">
-          <!-- Intentionally left blank to "show nothing" when opened -->
-        </div>
-      </div>
-
     </aside>
 
     <main class="content">
       <header class="topbar">
         <h1>MCC Portal — Seat Allotment Preview</h1>
       </header>
+
+      <section class="main-panels">
+        <div class="panel card main-panel new-registration-panel">
+          <div class="panel-header">New Registration</div>
+          <div class="panel-body">
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+
+        <div class="panel card main-panel allotment-panel-wrap">
+          <div class="panel-header">Allotment Letter</div>
+          <div class="allotment-blank-panel" aria-label="Allotment letter panel"></div>
+        </div>
+      </section>
 
       <section class="preview card">
         <div class="screenshot">
@@ -70,7 +67,7 @@
       </section>
 
       <footer class="footer">
-        <p>Preview site for the MCC Portal UI. Merge branch <code>add-mcc-portal-site</code> into your default branch and enable Pages from <code>/docs</code> to publish.</p>
+        <p>Preview site for the MCC Portal UI.</p>
       </footer>
     </main>
 
@@ -104,14 +101,8 @@
         <li><strong>Source URL (visible in screenshot):</strong>
           <div class="contact-line">https://mcc.admissions.nic.in/Counseling/SeatAllotmentResult/ResultHome.aspx</div>
         </li>
-
-        <li><strong>Notes:</strong>
-          <div class="contact-line">Screenshot shows left sidebar menu with active seat allotment item and verification badges.</div>
-        </li>
       </ul>
     </aside>
   </div>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
