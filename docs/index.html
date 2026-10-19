@@ -41,12 +41,12 @@
       <div class="panel">
         <div class="header">Available Services</div>
         <ul>
-          <li><button class="link">Candidate Profile</button></li>
-          <li><button class="link">Available Choices</button></li>
-          <li><button class="link">Choice Filling</button></li>
-          <li class="active"><button class="link">Seat Allotment Result</button></li>
-          <li><button class="link">Fee Payment Details</button></li>
-          <li><button class="link">Print Locked Choice(s)</button></li>
+          <li><button class="link" id="sidebarCandidate">Candidate Profile</button></li>
+          <li><button class="link" id="sidebarChoices">Available Choices</button></li>
+          <li><button class="link" id="sidebarFilling">Choice Filling</button></li>
+          <li class="active"><button class="link" id="sidebarSeatAllot">Seat Allotment Result</button></li>
+          <li><button class="link" id="sidebarFee">Fee Payment Details</button></li>
+          <li><button class="link" id="sidebarPrint">Print Locked Choice(s)</button></li>
           <!-- Added left-side Allotment Letter item -->
           <li><button id="sidebarAllotment" class="link">Allotment Letter</button></li>
         </ul>
@@ -104,10 +104,12 @@
       const allotBox = document.getElementById('allotmentBox');
       const mainHeader = document.getElementById('mainAllotmentHeader');
       const sidebarBtn = document.getElementById('sidebarAllotment');
+      const sidebarSeatAllot = document.getElementById('sidebarSeatAllot');
 
       function toggleEmptyBox(){
         const shown = allotBox.classList.toggle('visible');
         allotBox.setAttribute('aria-hidden', (!shown).toString());
+        console.log('Allotment box toggled. visible=', shown);
       }
 
       if (mainHeader){
@@ -118,10 +120,18 @@
       if (sidebarBtn){
         sidebarBtn.addEventListener('click', function(e){
           e.preventDefault();
-          // When user taps the left-side Allotment Letter, show the same empty box (no content)
           toggleEmptyBox();
         });
       }
+
+      // Also bind the existing "Seat Allotment Result" sidebar item — users often tap this expecting allotment box to open
+      if (sidebarSeatAllot){
+        sidebarSeatAllot.addEventListener('click', function(e){
+          e.preventDefault();
+          toggleEmptyBox();
+        });
+      }
+
     })();
   </script>
 </body>
