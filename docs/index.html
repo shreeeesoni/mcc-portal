@@ -3,153 +3,116 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MCC Portal — UI Preview</title>
+  <title>MCC Portal — Seat Allotment Preview</title>
   <style>
-  :root{
-    --bg:#f3f5f7;
-    --card:#ffffff;
-    --accent:#0b6fb8;
-    --muted:#666;
-    --panel-header-bg:#0b0b0b;
-  }
-  *{box-sizing:border-box}
-  body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-    background:var(--bg);
-    color:#222;
-  }
-  .wrapper{
-    display:flex;
-    gap:24px;
-    max-width:1200px;
-    margin:28px auto;
-    padding:0 16px;
-  }
-  .sidebar{width:320px}
-  .content{flex:1;display:flex;flex-direction:column;gap:16px}
-  .card{background:var(--card);border-radius:6px;padding:0;margin-bottom:0;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
-  .panel{overflow:hidden}
-  .panel-header{
-    background:var(--panel-header-bg);
-    color:#fff;
-    padding:14px 16px;
-    font-weight:600;
-    border-top-left-radius:6px;
-    border-top-right-radius:6px;
-  }
-  .panel-header.small{background:linear-gradient(180deg,#0b6fb8,#0a5f94)}
-  .panel-list{list-style:none;margin:0;padding:0}
-  .panel-list li{padding:12px 14px;border-top:1px solid #e6e6e6;background:linear-gradient(#fff,#fafafa);font-size:14px}
-  .panel-list li:first-child{border-top:0}
-  .panel-list li.active{background:var(--accent);color:#fff;font-weight:700}
-  .badge{background:#ffcc00;color:#000;font-size:11px;padding:2px 6px;border-radius:3px;margin-left:8px}
-  .badge.small{font-size:10px;padding:2px 4px}
-  .small{padding:12px 16px}
-  .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px;display:inline-block}
-  .verify{list-style:none;padding:10px;margin:0;color:var(--muted)}
-  .contact .email{font-family:monospace;color:#0b5d82;padding:12px}
-  .topbar{padding:8px 0}
-  .topbar h1{margin:0;font-size:20px}
+    :root {
+      --bg: #f3f5f7;
+      --card: #f4f4f4;
+      --panel-dark: #1f1f1f;
+      --panel-header-text: #ffffff;
+      --blue: #1d8fe8;
+      --light-border: #d9d9d9;
+      --text: #111111;
+    }
 
-  .main-panels{
-    display:flex;
-    gap:16px;
-    align-items:flex-start;
-  }
-  .main-panel{flex:1;min-width:0}
-  .new-registration-panel .panel-body{padding:16px}
-  .allotment-panel-wrap{background:#f7f7f7}
-  .allotment-blank-panel{
-    min-height:120px;
-    background:#f5f5f5;
-    border:1px dashed #d1d1d1;
-    border-top:1px solid #e9e9e9;
-    margin:12px;
-    border-radius:6px;
-  }
-  .preview{padding:16px}
-  .screenshot img{width:100%;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.12)}
-  .help{color:var(--muted);font-size:13px;margin-top:8px}
-  .footer{color:var(--muted);font-size:13px;padding:12px}
+    * { box-sizing: border-box; }
 
-  @media (max-width:1100px){
-    .wrapper{flex-direction:column;padding:12px}
-    .sidebar{width:100%}
-    .main-panels{flex-direction:column}
-  }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 24px 0 24px;
+    }
+
+    .title {
+      margin: 0 0 22px 0;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .card {
+      width: 50%;
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+      border: 1px solid #d8d8d8;
+    }
+
+    .card-header {
+      background: var(--panel-dark);
+      color: var(--panel-header-text);
+      font-weight: 700;
+      font-size: 18px;
+      padding: 18px 20px;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-body {
+      background: #f2f2f2;
+      padding: 20px;
+      min-height: 180px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .register-btn {
+      background: var(--blue);
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 14px 22px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .allotment-box {
+      width: 100%;
+      min-height: 150px;
+      border: 2px dashed #cfcfcf;
+      background: rgba(255,255,255,0.12);
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <aside class="sidebar">
-      <div class="panel card">
-        <div class="panel-header">Available Services</div>
-        <ul class="panel-list">
-          <li>Candidate Profile</li>
-          <li>Available Choices</li>
-          <li>Choice Filling</li>
-          <li class="active">Seat Allotment Result <span class="badge">NEW</span></li>
-          <li>Fee Payment Details</li>
-          <li>Print Locked Choice(s)</li>
-        </ul>
-      </div>
+  <div class="page">
+    <h1 class="title">MCC Portal — Seat Allotment Preview</h1>
 
-      <div class="panel card small">
-        <div class="panel-header small">System Generated Letters</div>
-        <button class="btn">View/Download Letters</button>
-      </div>
-
-      <div class="panel card small">
-        <div class="panel-header small">Verify Mobile No. &amp; Email Id</div>
-        <ul class="verify">
-          <li>✔ Mobile Number Verified</li>
-          <li>✔ Email id verified</li>
-        </ul>
-      </div>
-
-      <div class="panel card small contact">
-        <div class="panel-header small">Contact Us</div>
-        <p class="email">mccundergraduate[at]gmail[dot]com</p>
-      </div>
-    </aside>
-
-    <main class="content">
-      <header class="topbar">
-        <h1>MCC Portal — Seat Allotment Preview</h1>
-      </header>
-
-      <section class="main-panels">
-        <div class="panel card main-panel new-registration-panel">
-          <div class="panel-header">New Registration</div>
-          <div class="panel-body">
-            <button class="btn">Register Now</button>
-          </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">New Registration</div>
+        <div class="card-body">
+          <button class="register-btn">Register Now</button>
         </div>
+      </div>
 
-        <div class="panel card main-panel allotment-panel-wrap">
-          <div class="panel-header">Allotment Letter</div>
-          <div class="allotment-blank-panel" aria-label="Allotment letter panel"></div>
+      <div class="card">
+        <div class="card-header">Allotment Letter</div>
+        <div class="card-body">
+          <div class="allotment-box" aria-label="Allotment Letter area"></div>
         </div>
-      </section>
-
-      <section class="preview card">
-        <div class="screenshot">
-          <img src="assets/screenshots/screenshot1.png" alt="Seat Allotment screenshot">
-        </div>
-        <p class="help">Replace <code>docs/assets/screenshots/screenshot1.png</code> with your screenshot to show the real UI.</p>
-      </section>
-
-      <footer class="footer">
-        <p>Preview site for the MCC Portal UI.</p>
-      </footer>
-    </main>
+      </div>
+    </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log('MCC Portal preview loaded');
-    });
-  </script>
 </body>
 </html>
