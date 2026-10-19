@@ -42,7 +42,14 @@
       <!-- New: Allotment Letter collapsible panel (opens but contains nothing) -->
       <div class="panel card allotment-card">
         <div class="panel-header">Allotment Letter</div>
-        <button id="toggleAllotment" class="btn small">Open</button>
+
+        <!-- Checkbox toggle (CSS-only fallback) -->
+        <input type="checkbox" id="toggleAllotmentCheckbox" class="toggle-checkbox" aria-hidden="true">
+        <label for="toggleAllotmentCheckbox" class="btn small btn-toggle">Open</label>
+
+        <!-- JS toggle (kept for compatibility) -->
+        <button id="toggleAllotment" class="btn small" style="display:none">Open</button>
+
         <div id="allotmentPanel" class="allotment-panel" aria-hidden="true">
           <!-- Intentionally left blank to "show nothing" when opened -->
         </div>

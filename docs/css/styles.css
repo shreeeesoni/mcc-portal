@@ -40,7 +40,8 @@ body{
 .badge{background:#ffcc00;color:#000;font-size:11px;padding:2px 6px;border-radius:3px;margin-left:8px}
 .badge.small{font-size:10px;padding:2px 4px}
 .small{padding:12px 16px}
-.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px}
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px;display:inline-block}
+.btn-toggle{margin:12px;display:inline-block}
 .verify{list-style:none;padding:10px;margin:0;color:var(--muted)}
 .contact .email{font-family:monospace;color:#0b5d82;padding:12px}
 .topbar{padding:8px 0}
@@ -58,11 +59,15 @@ body{
 .contact-line{font-family:monospace;color:#0b5d82;margin-top:6px}
 
 /* Allotment panel styles: collapsed by default, expands when visible but contains no content */
-.allotment-card{margin-top:12px}
-#toggleAllotment{margin:12px}
-.allotment-panel{height:0;overflow:hidden;border-top:1px solid #e6e6e6;transition:height 200ms ease;padding:0 12px}
+.allotment-card{margin-top:12px;padding-bottom:12px}
+.toggle-checkbox{display:none}
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px;display:inline-block}
+.btn-toggle{margin:12px;display:inline-block}
+.allotment-panel{max-height:0;overflow:hidden;border-top:1px solid #e6e6e6;transition:max-height 220ms ease;padding:0 12px}
 /* when visible, show an empty block with a minimal height so it's clearly "open" but empty */
-.allotment-panel.visible{height:64px}
+.allotment-panel.visible{max-height:64px}
+/* CSS-only fallback: when checkbox is checked, expand the panel */
+#toggleAllotmentCheckbox:checked ~ .allotment-panel{max-height:64px}
 
 @media (max-width:1100px){
   .wrapper{flex-direction:column;padding:12px}
