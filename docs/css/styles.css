@@ -15,12 +15,13 @@ body{
 .wrapper{
   display:flex;
   gap:24px;
-  max-width:1100px;
+  max-width:1200px;
   margin:28px auto;
   padding:0 16px;
 }
 .sidebar{width:320px}
 .content{flex:1;display:flex;flex-direction:column;gap:16px}
+.details{width:320px;padding:0}
 .card{background:var(--card);border-radius:6px;padding:0;margin-bottom:0;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
 .panel{overflow:hidden}
 .panel-header{
@@ -37,6 +38,7 @@ body{
 .panel-list li:first-child{border-top:0}
 .panel-list li.active{background:var(--accent);color:#fff;font-weight:700}
 .badge{background:#ffcc00;color:#000;font-size:11px;padding:2px 6px;border-radius:3px;margin-left:8px}
+.badge.small{font-size:10px;padding:2px 4px}
 .small{padding:12px 16px}
 .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin:12px}
 .verify{list-style:none;padding:10px;margin:0;color:var(--muted)}
@@ -47,7 +49,16 @@ body{
 .screenshot img{width:100%;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.12)}
 .help{color:var(--muted);font-size:13px;margin-top:8px}
 .footer{color:var(--muted);font-size:13px;padding:12px}
-@media (max-width:880px){
+
+/* Details panel */
+.details-header{background:linear-gradient(180deg,#0b6fb8,#0a5f94);color:#fff;padding:12px 14px;border-top-left-radius:6px;border-top-right-radius:6px;font-weight:700}
+.details-list{list-style:none;margin:0;padding:12px 14px;font-size:14px;color:var(--muted)}
+.details-list li{margin-bottom:10px}
+.details-list ul{list-style:disc;margin:6px 0 0 18px;padding:0}
+.contact-line{font-family:monospace;color:#0b5d82;margin-top:6px}
+
+@media (max-width:1100px){
   .wrapper{flex-direction:column;padding:12px}
   .sidebar{width:100%}
+  .details{width:100%}
 }
