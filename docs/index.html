@@ -3,116 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MCC Portal — Seat Allotment Preview</title>
+  <title>MCC Portal — Sidebar Preview</title>
   <style>
-    :root {
-      --bg: #f3f5f7;
-      --card: #f4f4f4;
-      --panel-dark: #1f1f1f;
-      --panel-header-text: #ffffff;
-      --blue: #1d8fe8;
-      --light-border: #d9d9d9;
-      --text: #111111;
-    }
+    :root{--bg:#f3f5f7;--card:#ffffff;--accent:#0b6fb8;--dark:#0b0b0b;--muted:#666}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#222}
+    .layout{display:flex;max-width:1100px;margin:20px auto;gap:24px;padding:0 16px}
+    aside.sidebar{width:320px}
+    .panel{background:var(--card);border-radius:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+    .panel .header{background:var(--dark);color:#fff;padding:12px 14px;font-weight:700}
+    .panel ul{list-style:none;margin:0;padding:0}
+    .panel li{border-top:1px solid #eee;background:linear-gradient(#fff,#fbfbfb);padding:10px 14px;font-size:14px}
+    .panel li:first-child{border-top:0}
+    .panel li.active{background:var(--accent);color:#fff}
+    .panel button.link{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;width:100%}
 
-    * { box-sizing: border-box; }
+    main.content{flex:1}
+    .top{margin:0 0 12px 0;font-size:20px;font-weight:700}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
+    /* content area where the allotment letter would appear (intentionally empty) */
+    .content-panel{background:var(--card);border-radius:6px;padding:16px;min-height:220px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+    .empty-box{width:100%;height:160px;border:2px dashed #e0e0e0;border-radius:6px;background:transparent;transition:box-shadow 160ms ease}
+    .empty-box.visible{box-shadow:inset 0 0 0 0 rgba(0,0,0,0)}
 
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 24px 0 24px;
-    }
+    /* small styles for New Registration card inside sidebar */
+    .small-card{margin-top:12px;padding:0}
+    .small-card .header{background:linear-gradient(180deg,#0b6fb8,#0a5f94)}
+    .small-card .body{padding:12px}
+    .btn{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:4px;cursor:pointer}
 
-    .title {
-      margin: 0 0 22px 0;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .cards {
-      display: flex;
-      gap: 24px;
-      width: 100%;
-      align-items: stretch;
-    }
-
-    .card {
-      width: 50%;
-      background: var(--card);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-      border: 1px solid #d8d8d8;
-    }
-
-    .card-header {
-      background: var(--panel-dark);
-      color: var(--panel-header-text);
-      font-weight: 700;
-      font-size: 18px;
-      padding: 18px 20px;
-      min-height: 62px;
-      display: flex;
-      align-items: center;
-    }
-
-    .card-body {
-      background: #f2f2f2;
-      padding: 20px;
-      min-height: 180px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-    }
-
-    .register-btn {
-      background: var(--blue);
-      color: white;
-      border: 0;
-      border-radius: 8px;
-      padding: 14px 22px;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
-    }
-
-    .allotment-box {
-      width: 100%;
-      min-height: 150px;
-      border: 2px dashed #cfcfcf;
-      background: rgba(255,255,255,0.12);
-      border-radius: 6px;
-    }
+    @media (max-width:880px){.layout{flex-direction:column}.sidebar{width:100%}}
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1 class="title">MCC Portal — Seat Allotment Preview</h1>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="header">Available Services</div>
+        <ul>
+          <li><button class="link">Candidate Profile</button></li>
+          <li><button class="link">Available Choices</button></li>
+          <li><button class="link">Choice Filling</button></li>
+          <li class="active"><button class="link">Seat Allotment Result</button></li>
+          <li><button class="link">Fee Payment Details</button></li>
+          <li><button class="link">Print Locked Choice(s)</button></li>
+        </ul>
+      </div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="card-header">New Registration</div>
-        <div class="card-body">
-          <button class="register-btn">Register Now</button>
+      <div class="panel small-card">
+        <div class="header">System Generated Letters</div>
+        <div class="body"><button class="btn">View/Download Letters</button></div>
+      </div>
+
+      <div class="panel small-card">
+        <div class="header">Verify Mobile No. & Email Id</div>
+        <div class="body">
+          <div>✔ Mobile Number Verified</div>
+          <div>✔ Email id verified</div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-header">Allotment Letter</div>
-        <div class="card-body">
-          <div class="allotment-box" aria-label="Allotment Letter area"></div>
+      <div class="panel small-card">
+        <div class="header">Contact Us</div>
+        <div class="body"><span style="font-family:monospace;color:#0b5d82">mccundergraduate[at]gmail[dot]com</span></div>
+      </div>
+
+    </aside>
+
+    <main class="content">
+      <div class="top">MCC Portal — Seat Allotment Preview</div>
+
+      <div class="content-panel">
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="flex:1;max-width:45%">
+            <div class="panel">
+              <div class="header">New Registration</div>
+              <div class="body" style="padding:12px"><button class="btn">Register Now</button></div>
+            </div>
+          </div>
+
+          <div style="flex:1">
+            <div class="panel">
+              <div class="header">Allotment Letter</div>
+              <div class="body" style="padding:12px">
+                <!-- This box is intentionally empty when shown -->
+                <div id="allotmentBox" class="empty-box" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
+
+  <script>
+    // When the user taps the 'Allotment Letter' header in the sidebar, show the empty box (no content)
+    (function(){
+      const allotBox = document.getElementById('allotmentBox');
+      // Find the sidebar "Allotment Letter" element — user asked tapping on 'Allotment Letter' (we'll bind to the panel header in main)
+      // We'll make the header clickable as well to meet the requirement
+      const allotmentHeaders = Array.from(document.querySelectorAll('.panel .header'));
+      allotmentHeaders.forEach(h => {
+        if (/Allotment Letter/i.test(h.textContent)){
+          h.style.cursor = 'pointer';
+          h.addEventListener('click', function(){
+            // toggle visibility class — but do not add any text/content
+            const shown = allotBox.classList.toggle('visible');
+            allotBox.setAttribute('aria-hidden', (!shown).toString());
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
